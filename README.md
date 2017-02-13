@@ -31,3 +31,7 @@ http://www.nactem.ac.uk/software/acromine/rest.html
 4. If any result has variations, selection of the cell will take you to the "Variations" screen.
 
 ==============================================================================
+
+Pending:
+1. Create constanst whereever needed and access them from constants file
+2. Localization
