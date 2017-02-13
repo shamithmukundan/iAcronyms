@@ -39,21 +39,20 @@
 }
 
 - (void)didReceiveMemoryWarning {
-
     [super didReceiveMemoryWarning];
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     if ([self.searchTextField isFirstResponder]) {
         [self.searchTextField resignFirstResponder];
     }
+    [super viewWillDisappear:animated];
 }
 
 //fetch definitions for given string
 - (void)fetchDefinitions {
     
-    NSString *searchText = [self.searchTextField.text stringByTrimmingCharactersInSet:
-                            [NSCharacterSet whitespaceCharacterSet]];
+    NSString *searchText = [[self.searchTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByReplacingOccurrencesOfString:@" " withString:@""];
 
     self.acronymTableView.hidden = YES;
     [self.searchTextField resignFirstResponder];
@@ -91,7 +90,7 @@
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     NSString *trimmedText = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    self.searchButton.enabled = (trimmedText.length < 2) ? NO : YES;
+    self.searchButton.enabled = (trimmedText.length >= 2);
     
     return YES;
 }
