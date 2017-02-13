@@ -10,9 +10,11 @@ Carthage is used as dependency manager with the following project
 To run project 
 
 1. Ensure carthage is installed. Else download and install pkg from https://github.com/Carthage/Carthage/releases
-2. Via terminal run the following command at root of project
-    carthage update --platform iOS
-    This command will download the AFNetworking and MBProgressHUD framework at /Carthage/Build/iOS/
+2. Via terminal run the following command at root of project.
+
+    `carthage update --platform iOS`
+    
+    This command will download the AFNetworking and MBProgressHUD framework at iAcronyms/Carthage/Build/iOS/
 3. Run the build via xCode.
 
 App supports iOS 10.0 and later.
