@@ -90,16 +90,26 @@
 #pragma mark - UITextField delegate methods
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    NSString *trimmedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    self.searchButton.enabled = (trimmedText.length == 0) ? NO : YES;
+    NSString *trimmedText = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    self.searchButton.enabled = (trimmedText.length < 2) ? NO : YES;
     
     return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    [self fetchDefinitions];
+    [self.searchTextField resignFirstResponder];
+    NSString *trimmedText = [self.searchTextField.text stringByTrimmingCharactersInSet:
+                             [NSCharacterSet whitespaceCharacterSet]];
+    if (trimmedText.length >= 2) {
+        [self fetchDefinitions];
+    }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.acronymTableView setHidden:YES];
 }
 
 #pragma mark- UITableView Datasource methods
