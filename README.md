@@ -25,8 +25,9 @@ http://www.nactem.ac.uk/software/acromine/rest.html
 
 ==============================================================================
 
-Launch of the app will take you to "Search Definitions" screen
-Search of valid acronyms/initialisms will show results.
-If any result has variations, selection of the cell will take you to the "Variations" screen.
+1. Launch of the app will take you to "Search Definitions" screen
+2. Search of valid acronyms/initialisms will show results.
+3. Search needs minimum 2 characters.
+4. If any result has variations, selection of the cell will take you to the "Variations" screen.
 
 ==============================================================================
